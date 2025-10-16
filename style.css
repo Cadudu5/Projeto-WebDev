@@ -14,6 +14,7 @@
     --second-bg-color: #131313;
     --text-color: white;
     --main-color: #00ffee;
+    --white-neon-color: #ffffff;
 }
 
 html{
@@ -128,7 +129,10 @@ span{
 .home-img img{
     position: relative;
     top: 3rem;
-    width: 32vw;
+    max-width: 100%;
+    height: auto;
+    min-width: 300px;
+    max-height: 500px;
     border-radius: 50%;
     box-shadow: 0 0 25px var(--main-color);
     cursor: pointer;
@@ -318,7 +322,11 @@ span{
     position: absolute;
     width: 5px;
     height: 100%;
-    background-color: var(--main-color);
+    background: linear-gradient(to bottom, 
+        var(--main-color) 0%, 
+        var(--main-color) 60%, 
+        var(--white-neon-color) 60%, 
+        var(--white-neon-color) 100%);
     left: calc(50% - 1px);
 }
 .timeline-item{
@@ -395,6 +403,23 @@ span{
     font-size: 16px;
     font-weight: 300;
     line-height: 22px;
+}
+
+/* Estilos específicos para projetos 2026 */
+.timeline-item.year-2026 .timeline-dot{
+    background-color: var(--white-neon-color);
+    box-shadow: 0 0 25px var(--white-neon-color),
+                0 0 25px var(--white-neon-color);
+}
+
+.timeline-item.year-2026 .timeline-content{
+    border: 3px solid var(--white-neon-color);
+    box-shadow: 0 0 10px var(--white-neon-color);
+}
+
+.timeline-item.year-2026 .timeline-content:hover{
+    transform: scale(1.05);
+    box-shadow: 0 0 25px var(--white-neon-color);
 }
 
 ::-webkit-scrollbar{
@@ -492,8 +517,7 @@ span{
     flex-wrap: wrap;
 }
 
-.contact form .input-box input,
-.contact form textarea{
+.contact form .form-control{
     width: 100%;
     padding: 2.5rem;
     font-size: 1.8rem;
@@ -503,6 +527,13 @@ span{
     border: 2px solid var(--main-color);
     margin: 1.5rem 0;
     resize: none;
+}
+
+.contact form .form-control:focus{
+    background: var(--second-bg-color);
+    border-color: var(--main-color);
+    box-shadow: 0 0 10px var(--main-color);
+    color: var(--text-color);
 }
 
 .contact form .btn{
@@ -568,7 +599,25 @@ span{
     padding: 0 15px;
 }
 
-/* Responsividade */
+/* Responsividade adicional para Bootstrap */
+@media(max-width: 768px){
+    .home-content h1{
+        font-size: 5rem;
+    }
+    
+    .home-content h3{
+        font-size: 2.5rem;
+    }
+    
+    .service-box{
+        height: auto;
+        min-height: 250px;
+    }
+    
+    .timeline-item{
+        text-align: left !important;
+    }
+}
 
 @media(max-width: 1285px){
     html{
@@ -660,6 +709,8 @@ span{
 
     .home-img img{
         width: 56vw;
+        max-width: 400px;
+        min-width: 250px;
     }
 
     .services h2{
