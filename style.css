@@ -322,11 +322,7 @@ span{
     position: absolute;
     width: 5px;
     height: 100%;
-    background: linear-gradient(to bottom, 
-        var(--main-color) 0%, 
-        var(--main-color) 60%, 
-        var(--white-neon-color) 60%, 
-        var(--white-neon-color) 100%);
+    background-color: var(--main-color);
     left: calc(50% - 1px);
 }
 .timeline-item{
@@ -420,6 +416,18 @@ span{
 .timeline-item.year-2026 .timeline-content:hover{
     transform: scale(1.05);
     box-shadow: 0 0 25px var(--white-neon-color);
+}
+
+/* Linha branca que começa no primeiro projeto de 2026 */
+.timeline-item.year-2026:first-of-type::before{
+    content: "";
+    position: absolute;
+    width: 5px;
+    background-color: var(--white-neon-color);
+    left: calc(50% - 1px);
+    top: 0;
+    height: 200vh;
+    z-index: 1;
 }
 
 ::-webkit-scrollbar{
